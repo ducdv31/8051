@@ -1,0 +1,45 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/01/2020 01:01:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<regx51.h>
+   2          void delay(unsigned int t){
+   3   1        unsigned int i;
+   4   1        while(t--){
+   5   2          for (i=0;i<82;i++){
+   6   3        }
+   7   2        }
+   8   1      }
+   9          int main(){
+  10   1        while(1){
+  11   2          // 10101010 = AAH
+  12   2          // 01010101 = 55H
+  13   2          // 11110000 =
+  14   2        P2 = 0xAA;
+  15   2        delay(500);
+  16   2        P2 = !P2;
+  17   2        delay(500);
+  18   2        }
+  19   1        return 0;
+  20   1      }
+*** WARNING C294 IN LINE 19 OF main.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     61    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\tao_lib" 
+PRINT(".\Listings\tao_lib.m51")

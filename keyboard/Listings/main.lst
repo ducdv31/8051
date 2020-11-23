@@ -1,0 +1,79 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/02/2020 01:42:44 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<regx51.h>
+   2          void delay(unsigned int t){
+   3   1        unsigned int i;
+   4   1        while(t--){
+   5   2        for(i=0;i<80;i++){
+   6   3        }
+   7   2        }
+   8   1        
+   9   1      }
+  10            unsigned int count = 0;
+  11          void checkbt(){
+  12   1        
+  13   1        P1_0 = 1;
+  14   1        P1_5 = 0;
+  15   1        if(P1_0 ==0){
+  16   2            delay(200);
+  17   2            if(P1_0 ==0){
+  18   3              count++;
+  19   3              if(count == 4){
+  20   4                count = 0;
+  21   4              }
+  22   3            }
+  23   2          }
+  24   1        
+  25   1      }
+  26          int main()
+  27          {
+  28   1        
+  29   1      
+  30   1        while(1)
+  31   1        {
+  32   2          checkbt();
+  33   2          if(count == 0){
+  34   3            P2 = 0x00;
+  35   3          }
+  36   2          else if(count == 1){
+  37   3            P2 = 0xFF;
+  38   3          }
+  39   2          else if(count == 2){
+  40   3            P2 = 0xAA;
+  41   3          }
+  42   2          else if(count == 3){
+  43   3            unsigned int j;
+  44   3            for(j=0;j<8;j++){
+  45   4              P2 = 0x01 << j;
+  46   4              delay(200);
+  47   4            }
+  48   3            
+  49   3            }   
+  50   2        }
+  51   1        return 0;
+  52   1      }
+*** WARNING C294 IN LINE 51 OF main.c: unreachable code
+
+C51 COMPILER V9.60.0.0   MAIN                                                              10/02/2020 01:42:44 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    160    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

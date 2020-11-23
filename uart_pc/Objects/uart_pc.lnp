@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\uart_pc" 
+PRINT(".\Listings\uart_pc.m51")

@@ -1,0 +1,75 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/06/2020 10:02:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "regx51.h"
+   2          #include "..\Lib\Delay.h"
+*** WARNING C280 IN LINE 5 OF \Users\ducda\Documents\uVision\8051\Lib\Delay.c: 'i': unreferenced local variable
+   3          sbit LED1 = P2^0;
+   4          sbit LED2 = P2^1;
+   5          sbit LED3 = P2^2;
+   6          sbit LED4 = P2^3;
+   7          unsigned char LED7SEG[10] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+   8          void Delay (unsigned int Time)
+   9          {
+  10   1      while(Time--);
+  11   1      }
+  12          void main (void)
+  13          {
+  14   1      unsigned int i;
+  15   1      unsigned int j;
+  16   1      LED1 = 0;
+  17   1      LED2 = 0;
+  18   1      LED3 = 0;
+  19   1      LED4 = 0;
+  20   1      while(1)
+  21   1      {
+  22   2      for(i = 0; i < 10000; i++)
+  23   2      {
+  24   3      for (j = 0; j < 10; j++)
+  25   3      {
+  26   4      P0 = LED7SEG[i/1000];
+  27   4      LED1 = 0;
+  28   4      delay1(10);
+  29   4      LED1 = 1;
+  30   4       
+  31   4      P0 = LED7SEG[(i%1000)/100];
+  32   4      LED2 = 0;
+  33   4      delay1(10);
+  34   4      LED2 = 1;
+  35   4       
+  36   4      P0 = LED7SEG[(i%100)/10];
+  37   4      LED3 = 0;
+  38   4      delay1(10);
+  39   4      LED3 = 1;
+  40   4       
+  41   4      P0 = LED7SEG[i%10];
+  42   4      LED4 = 0;
+  43   4      delay1(10);
+  44   4      LED4 = 1;
+  45   4      }
+  46   3      }
+  47   2      }
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    259    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              10/06/2020 10:02:17 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

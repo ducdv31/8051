@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\timer_80per" 
+PRINT(".\Listings\timer_80per.m51") RAMSIZE(64) 

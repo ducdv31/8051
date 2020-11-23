@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\interrupt" 
+PRINT(".\Listings\interrupt.m51")

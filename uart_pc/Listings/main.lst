@@ -1,0 +1,42 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/07/2020 12:34:53 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<at89x51.h>           //Khai báo thư viện cho 89c51
+   2          #include "..\Lib\UART.h"      // Thu vien giaao tiep  UART
+   3          #include "..\Lib\Delay.h"     // Thu vien dely
+*** WARNING C280 IN LINE 5 OF \Users\ducda\Documents\uVision\8051\Lib\Delay.c: 'i': unreferenced local variable
+   4          main()                        //Chương trình chính
+   5          {
+   6   1        TMOD=0x20;                  //Chọn Timer1, chế độ 2
+   7   1        TH1=0xFD;                   //Cài đặt tốc độ 9600 baud
+   8   1        SCON=0x50;                  //0101 0000: Chọn chế độ 1, Cho phép nhận
+   9   1        TR1=1;                      //Khởi động Timer1
+  10   1      
+  11   1        while(1)                    //Vòng lặp vô hạn
+  12   1        {
+  13   2        SendData("Hello AE");       //Gọi hàm gửi 1 chuỗi
+  14   2        Send(10);                   //Gửi dấu xuống dòng
+  15   2        delay2(1000);
+  16   2        }
+  17   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    159    ----
+   CONSTANT SIZE    =      9    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

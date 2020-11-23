@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\timer_mode2" 
+PRINT(".\Listings\timer_mode2.m51") RAMSIZE(64) 

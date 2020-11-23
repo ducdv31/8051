@@ -1,0 +1,122 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/02/2020 15:09:26 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include<regx51.h>
+   2          sbit LCD_RW = P3^5;
+   3          sbit LCD_RS = P3^4;
+   4          sbit LCD_EN = P3^6;
+   5          #define LCD_DATA P2
+   6          void delay(unsigned int t)
+   7          {
+   8   1        unsigned int i;
+   9   1        while(t--){
+  10   2          for(i = 0;i < 80;i++)
+  11   2          {
+  12   3            
+  13   3          }
+  14   2          
+  15   2        }
+  16   1        
+  17   1      }
+  18          void Lcd_cmd(unsigned char cmd) // Ham gui lenh ra LCD
+  19          {
+  20   1        LCD_RW = 0; // Chon che do ghi
+  21   1        LCD_RS = 0; // Chon che do ghi lenh
+  22   1        LCD_DATA = cmd; // Noi dung gui
+  23   1        LCD_EN = 0;
+  24   1        LCD_EN = 1;
+  25   1        if(cmd <= 0x02)
+  26   1        {
+  27   2          delay(20);
+  28   2        }
+  29   1        else{
+  30   2          delay(20);
+  31   2        }
+  32   1        
+  33   1      }
+  34          void Lcd_Char_Cp(char c)//Hàm hiển thị 1 kí tự tại vị trí con trỏ
+  35          {
+  36   1         LCD_RW =0;
+  37   1         LCD_RS =1; //Chọn chế độ gửi dữ liệu
+  38   1         LCD_DATA =c;  //Kí tự cần gửi ra màn hình
+  39   1         LCD_EN = 0;
+  40   1         LCD_EN =1;
+  41   1         delay(1);
+  42   1      
+  43   1      }
+  44          void Lcd_Out_Cp(char *str)// Hàm gửi chuỗi kí tự tại vị trí con trỏ
+  45          {
+  46   1      
+  47   1      unsigned char i=0;
+  48   1      while(str[i]!=0)  //Gửi từng kí tự của chuỗi đến khi gặp kí tự null
+  49   1      {
+  50   2         Lcd_Char_Cp(str[i]);
+  51   2         i++;
+  52   2      }
+  53   1      
+  54   1      }
+C51 COMPILER V9.60.0.0   MAIN                                                              10/02/2020 15:09:26 PAGE 2   
+
+  55          
+  56          
+  57          void Lcd_Out(unsigned char row, unsigned char col, char *str)   //Hàm Di chuyển vị trí con trỏ đ�
+             -�n vị trí bất kì và in chuỗi ra màn hình
+  58          {
+  59   1        unsigned char cmd;
+  60   1      
+  61   1        // Di chuyển con trỏ đến vị trí cần thiết
+  62   1        cmd = (row==1?0x80:0xC0) + col - 1;
+  63   1        Lcd_cmd(cmd);
+  64   1        Lcd_Out_Cp(str);
+  65   1      
+  66   1      }
+  67          
+  68          
+  69          void Lcd_Init() //Hàm khởi tạo LCD
+  70          {
+  71   1      
+  72   1       Lcd_cmd(0x30);
+  73   1       delay(5);
+  74   1       Lcd_cmd(0x30);
+  75   1       delay(1);
+  76   1       Lcd_cmd(0x30);
+  77   1       Lcd_cmd(0x38);   // Số dòng hiển thị là 2, cỡ chữ 5x8
+  78   1       Lcd_cmd(0x01);   // xóa màn hình
+  79   1       Lcd_cmd(0x0C);   //Bật hiển thị và tắt con trỏ các bạn có thể dùng lệnh 0xE0 để b�
+             -��t hiển thị và bật con trỏ
+  80   1      }
+  81          
+  82          
+  83          main()
+  84          
+  85          {
+  86   1       
+  87   1      Lcd_Init();
+  88   1      Lcd_Out(1,6,"BKHN") ;   //In dòng "Dien Tu 3M" ra hàng 1 và cột 4 trên màn hình
+  89   1      Lcd_Out(2,4,"LOVE HUST")  ;  //In dòng "Chotroihn.vn" ra hàng 2 và cột 3 trên màn hình
+  90   1      while(1){
+  91   2        delay(500);
+  92   2        Lcd_cmd(0x18);
+  93   2      }
+  94   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    226    ----
+   CONSTANT SIZE    =     15    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

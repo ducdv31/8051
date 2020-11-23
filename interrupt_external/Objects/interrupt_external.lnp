@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\interrupt_external" 
+PRINT(".\Listings\interrupt_external.m51")

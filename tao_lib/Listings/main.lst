@@ -1,0 +1,39 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/06/2020 16:43:01 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "regx51.h"
+   2          //#include "..\Lib\Delay.h"
+   3          #include "..\Lib\Lcd.h"
+*** WARNING C280 IN LINE 5 OF \Users\ducda\Documents\uVision\8051\Lib\Delay.c: 'i': unreferenced local variable
+   4          
+   5          void main()
+   6          {
+   7   1        Lcd_Init();
+   8   1        Lcd_Out(1,2,"Hello");
+   9   1        Lcd_Out(2,2,"Test ok");
+  10   1        while(1)
+  11   1        {
+  12   2        }
+  13   1        
+  14   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    245    ----
+   CONSTANT SIZE    =     14    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

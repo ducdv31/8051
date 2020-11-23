@@ -1,0 +1,45 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/06/2020 18:19:29 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "regx51.h"
+   2          #include "..\Lib\Lcd.h"
+*** WARNING C280 IN LINE 5 OF \Users\ducda\Documents\uVision\8051\Lib\Delay.c: 'i': unreferenced local variable
+   3          
+   4          char Temp;
+   5          
+   6          //char Rev_Data()
+   7          //{
+   8          //  char rev = 0;
+   9          //  while(!RI);
+  10          //  rev = SBUF;
+  11          //  return rev;
+  12          //}
+  13          void Interrrupt_Uart_Rev_Data() interrupt 4
+  14          {
+  15   1        if(RI == 1)
+  16   1        {
+  17   2          Temp = SBUF;
+  18   2          RI = 0;
+  19   2        }
+  20   1        
+  21   1      }
+  22          void main()
+  23          {
+  24   1        TMOD = 0x20; //Timer1,mode 2 autoreload
+  25   1        TH1 = TL1 = 0xE6; //Timer1, baudrate 1200
+  26   1        SCON = 0x60; // 8bit - timer1, SM2 = 1
+  27   1        TR1 = 1; // Khoi dong timer1
+  28   1        IE = 0x90;  //  EA = 1, ES = 1
+  29   1        Lcd_Init();
+  30   1        Lcd_Out(1,1,Temp);
+*** ERROR C214 IN LINE 30 OF main.c: illegal pointer conversion
+  31   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  1 ERROR(S)

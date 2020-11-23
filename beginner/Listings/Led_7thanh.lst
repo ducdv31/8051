@@ -1,0 +1,53 @@
+C51 COMPILER V9.60.0.0   LED_7THANH                                                        10/06/2020 18:30:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LED_7THANH
+OBJECT MODULE PLACED IN .\Objects\Led_7thanh.obj
+COMPILER INVOKED BY: B:\Keil_v5\C51\BIN\C51.EXE Led_7thanh.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\Led_7thanh.lst) TABS(2) OBJECT(.\Objects\Led_7thanh.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          void Delay(unsigned int t)
+   3          {
+   4   1        unsigned int i;
+   5   1        while(t--)
+   6   1        {
+   7   2          for(i = 0;i < 83;i++)
+   8   2          {
+   9   3            
+  10   3          }
+  11   2        }
+  12   1        
+  13   1      }
+  14          
+  15          void main()
+  16          {
+  17   1      int array[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80,0x90};
+  18   1      unsigned char i = 0;
+  19   1      while(1)
+  20   1      {
+  21   2      P2 = array[i];
+  22   2      Delay(200);
+  23   2      i++;
+  24   2      if(i==10)
+  25   2      {
+  26   3      i = 0;
+  27   3      }
+  28   2      }
+  29   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     77    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      20
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
